@@ -1,0 +1,23 @@
+configurations {
+    releaseAar {
+        canBeConsumed = true
+        canBeResolved = true
+    }
+}
+afterEvaluate {
+    Task task = tasks.getByName("bundleReleaseAar")
+    artifacts { ArtifactHandler artifactHandler ->
+        artifactHandler.add(
+                "releaseAar",
+                task.outputs
+                        .getFiles()
+                        .filter { File file -> file.name.contains(".aar") }
+                        .singleFile
+        ) { ConfigurablePublishArtifact configurablePublishArtifact ->
+            configurablePublishArtifact.builtBy(task)
+            configurablePublishArtifact.type("jar,aar")
+            configurablePublishArtifact.extension("aar")
+            configurablePublishArtifact.classifier("release")
+        }
+    }
+}

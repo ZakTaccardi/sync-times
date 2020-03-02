@@ -1,0 +1,5 @@
+include ':producer-a'
+include ':producer-b'
+include ':producer-c'
+include ':app'
+rootProject.name = "Sync Times"
