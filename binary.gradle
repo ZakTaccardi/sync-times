@@ -15,7 +15,7 @@ afterEvaluate {
                         .singleFile
         ) { ConfigurablePublishArtifact configurablePublishArtifact ->
             configurablePublishArtifact.builtBy(task)
-            configurablePublishArtifact.type("jar,aar")
+            configurablePublishArtifact.type("aar")
             configurablePublishArtifact.extension("aar")
             configurablePublishArtifact.classifier("release")
         }
