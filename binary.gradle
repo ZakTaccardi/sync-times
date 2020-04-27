@@ -10,7 +10,7 @@ afterEvaluate {
         artifactHandler.add(
                 "releaseAar",
                 task.outputs
-                        .getFiles()
+                        .files
                         .filter { File file -> file.name.contains(".aar") }
                         .singleFile
         ) { ConfigurablePublishArtifact configurablePublishArtifact ->
